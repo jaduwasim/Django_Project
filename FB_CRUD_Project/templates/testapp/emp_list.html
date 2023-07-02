@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+</head>
+<body>
+    <h1>All Employee List</h1>
+    {% if emp_list %}
+    <table border="2">
+        <thead>
+            <th>Employee Name</th>
+            <th>Link</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </thead>
+    {% for e in emp_list %}
+        <tr>
+            <td>{{e.ename}}</td>
+            <td><a href="/{{e.id}}">Details</a></td>
+            <td><a href="/update/{{e.id}}">Update</a></td>
+            <td><a href="/delete/{{e.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+   
+    {% else %}
+    <h1>No Recod Founds</h1>
+    {%endif%}
+</body>
+</html>
