@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'testapp/base.html' %}
+<!-- {% load static %} -->
+
+{% block title_block %}
+<title>Home</title>
+{% endblock %}
+
+{% block body_block %}
+<h1>Data Record</h1>
+    {% if emp_list %}
+    <table border="1" class="center">
+        <tr>
+            <th>Employee Number</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+            <th>Employee Address</th>
+        </tr>
+        {% for emp in emp_list %}
+        <tr>
+            <td>{{emp.eno}}</td>
+            <td>{{emp.ename}}</td>
+            <td>{{emp.esal}}</td>
+            <td>{{emp.eaddr}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {%else%}
+    <h1>Record not Found!</h1>
+    {% endif %}
+{% endblock %}

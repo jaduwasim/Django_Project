@@ -1,0 +1,10 @@
+body{
+    background: aqua;
+    text-align: center;
+    font-style: italic;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+}
