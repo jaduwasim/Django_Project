@@ -13,6 +13,7 @@ def Employee_Form_View(request):
             print('Employee Nanme:',form.cleaned_data['Employee_Name'])
             print('Employee Salary:',form.cleaned_data['Employee_Salary'])
             print('Employee Address:',form.cleaned_data['Employee_Address'])
+            form.save(commit=True)
             return render(request, 'testapp/thanks.html')
     return render(request, 'testapp/home.html', {'form':form})
 
