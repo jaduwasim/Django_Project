@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Result Page</title>
 </head>
 <body>
     {% if request.session %}
-    <h1>Page Requested Count: {{count}}</h1>
-    {% for key,value in request.session.items %}
+    <h1>Thanks for Providing Infromation</h1>
     <ul>
-        <li>{{key}}</li>
-        <li>{{value}}</li>
+        {% for key,value in request.session.items %}
+        <li><h1>{{key|upper}}:{{value|title}}</h1></li>
+        {% endfor %}
     </ul>
-    {% endfor %}
     {% else %}
-    <p>no session</p>
+    <h1>No Infromation Available</h1>
     {% endif %}
 </body>
 </html>
