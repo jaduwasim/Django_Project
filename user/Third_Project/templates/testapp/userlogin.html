@@ -10,21 +10,30 @@
     <form action="" method="post">
         {% csrf_token %}
         
-
+        {% if forms %}
         {% for form in forms %}
         {{form.label_tag}} {{form}} {{form.errors|striptags}} <br> <br>
         {% endfor %}
+        <input type="submit" value="Login" class="btn btn-primary" name="" id=""><br><br>
         {% if forms.non_field_errors %}
         {% for error in forms.non_field_errors %}
         <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-            {{error}} <br> <br>
+            {{error}} 
         </div>
         {% endfor %}
         {% endif %}
-        <input type="submit" value="Submit" class="btn btn-primary" name="" id="">
+        {% endif %}
     </form><br>
-    
+    {% if messages %}
+    {% for message in messages %}
+    <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+        {{message}}
+    </div><br>
+    {% endfor %}
+    <a href="{% url 'login' %}" class="btn btn-primary">Login</a><br><br>
+    {%else%}
     <a href="{% url 'singup' %}" class="btn btn-primary">SignUp</a><br><br>
+    {% endif %}
     
 </body>
 </html>
