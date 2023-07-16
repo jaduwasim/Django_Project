@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from testapp.views import (SignupView, UserLogin, UserLogout, Change_Pass_View,
                         Change_Second_Pass_View, Profile_View)
+from testapp.forms import Forget_Password_Form, SetPasswordForm
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +28,10 @@ urlpatterns = [
     path('changepass/', Change_Pass_View, name='changepass'),
     path('changesecondpass/', Change_Second_Pass_View, name='changesecondpass'),
     path('profile/', Profile_View, name='profile'),
+    # Forget Password
+    path('password-reset/', PasswordResetView.as_view(template_name = 'testapp/forgetpassword.html', form_class = Forget_Password_Form), name='password_reset'),
+    path('password-reset/done/', PasswordResetDoneView.as_view(template_name = 'testapp/password_reset_done.html'), name='password_reset_done'),
+    path('password-reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name = 'testapp/password_reset_confirm.html', form_class = SetPasswordForm), name='password_reset_confirm'),
+    path('password-reset-complete/', PasswordResetCompleteView.as_view(template_name='testapp/password_reset_complete.html'), name='password_reset_complete')
+
 ]
