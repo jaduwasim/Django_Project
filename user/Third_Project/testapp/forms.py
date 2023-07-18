@@ -18,6 +18,12 @@ class EditUserForm(UserChangeForm):
         model = User
         fields = ['username','first_name','last_name','email','date_joined','last_login']
         labels = {'email':'Email'}
+    
+class EditAdminProfileForm(UserChangeForm):
+    password = None
+    class Meta:
+        model = User
+        fields = '__all__'
 
 class Forget_Password_Form(PasswordResetForm):
     email = forms.EmailField(label='Email', max_length=265 , widget=forms.EmailInput)

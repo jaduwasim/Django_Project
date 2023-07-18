@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, tr, td {
+            border: 1 px solid black;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    {% for student in students %}
+    <table border="1">
+        <th>ID</th>
+        <th>NAME</th>
+        <th>ROLL</th>
+        <th>CITY</th>
+        <th>MARKS</th>
+        <th>PASS DATE</th>
+        <th>ADDMISSION DATE</th>
+        <tr>
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.roll}}</td>
+            <td>{{student.city}}</td>
+            <td>{{student.marks}}</td>
+            <td>{{student.passdate}}</td>
+            <td>{{student.admdatetime}}</td>
+        </tr>
+    </table>
+    {% endfor %}
+</body>
+</html>
