@@ -9,14 +9,20 @@
     <h1 class="text-white my-5">Contact Page</h1>
    <form action="">
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputName">Name</label>
-            <input type="text" class="form-control" name="" id="inputName">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputEmail">Email</label><br>
-            <input type="text" class="form-control" name="" id="inputEmail">
-        </div>
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {% for form in forms %}
+            <div class="form-group">
+            {{form.label_tag}} {{form}} <small class="text-danger">{{form.errors|striptags}}</small> <br>
+            </div>
+            {% endfor %}
+            <input type="submit" value="submit" name="" id="" class="btn btn-primary">
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="alert alert-danger my-3">{{error}}</p>
+            {% endfor %}
+            {% endif %}
+        </form>
     </div>
    </form>
 </div>

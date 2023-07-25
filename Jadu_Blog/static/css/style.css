@@ -9,3 +9,14 @@ body{
 .jumbo-color{
     background-color: rgb(83, 81,81);
 }
+.image--cover {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  
+    object-fit: cover;
+    object-position: center right;
+  }
+.lead{
+    text-align: justify;
+}

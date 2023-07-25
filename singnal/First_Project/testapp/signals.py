@@ -31,6 +31,7 @@ def loguot_success(sender, request, user, **kwargs):
 # user_logged_out.connect(loguot_success, sender=User) #We can use this instead of decorator @receiver(user_logged_out, sender=User)
 
 # This will call when user login failed, Thats means given credentials were worong!!!!
+# Login and Logout singnals
 @receiver(user_login_failed)
 def login_failded(sender, credentials, request, **kwargs):
     print('login Failled;')
@@ -42,6 +43,8 @@ def login_failded(sender, credentials, request, **kwargs):
     print(f'kwargs: {kwargs}')
 # user_login_failed.connect(login_failded) #We can use this instead of decorator @receiver(user_login_failed)
 
+
+# Model Signals
 @receiver(pre_save, sender=User)
 def at_ending_save(sender, instance, **kwargs):
     print('========================================')
@@ -100,6 +103,7 @@ def at_ending_init(sender,*args,**kwargs):
     print(f'args: {args}')
     print(f'kwargs: {kwargs}')
 
+# Management Signals
 @receiver(request_started)
 def at_beginning_request(sender, environ, **kwargs):
     print('===================================')

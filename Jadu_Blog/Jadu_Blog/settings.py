@@ -128,3 +128,11 @@ STATICFILES_DIRS =[
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Customize Login Timing:
+# SESSION_COOKIE_AGE = 60
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_REDIRECT_URL = '/'
