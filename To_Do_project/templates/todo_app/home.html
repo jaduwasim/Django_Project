@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Informations</title>
+</head>
+<body>
+    <h1>Data Informations</h1>
+    {% if data %}
+    <table border="2">
+        <thead>
+            <th>Sr. No</th>
+            <th>Title Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        {% for d in data %}
+        <tr>
+            <td>{{d.id}}</td>
+            <td>{{d.Title_Name}}</td>
+            <td>{{d.category}}</td>
+            <td>{{d.description}}</td>
+            <td>{{d.date}}</td>
+            <td><a href="/update/{{d.id}}">Click for Edit</a></td>
+            <td><a href="/delete/{{d.id}}">Click for Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    {% else %}
+    <h3>Data not Found!!</h3><br>
+    {% endif %}
+    <a href="{% url 'form' %}">Click here to add data</a>
+</body>
+</html>
