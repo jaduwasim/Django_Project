@@ -1,8 +1,10 @@
-from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
 from django.contrib.auth.models import User
 from django.dispatch import receiver
+from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
 from django.db.models.signals import pre_init, pre_save, pre_delete, post_init, post_save, post_delete, pre_migrate, post_migrate
 from django.core.signals import request_started, request_finished, got_request_exception
+from django.db.backends.signals import connection_created
+
 
 # This Will call When user login successfully.
 @receiver(user_logged_in, sender=User)
@@ -103,7 +105,7 @@ def at_ending_init(sender,*args,**kwargs):
     print(f'args: {args}')
     print(f'kwargs: {kwargs}')
 
-# Management Signals
+# Request/Response Signals
 @receiver(request_started)
 def at_beginning_request(sender, environ, **kwargs):
     print('===================================')
@@ -127,6 +129,8 @@ def at_ending_request(sender, request, **kwargs):
     print('environ:',request)
     print(f'kwargs: {kwargs}')
     
+
+# Management Singnals
 @receiver(pre_migrate)
 def before_install_app(sender, app_config, verbosity, interactive, using, plan, apps, **kwargs):
     print('================================')
@@ -152,3 +156,13 @@ def at_end_migrate_flush(sender, app_config, verbosity, interactive, using, plan
     print('plan:',plan)
     print('apps:',apps)
     print(f'kwargs: {kwargs}')
+
+
+# Database Wrapper
+@receiver(connection_created)
+def conn_db(sender, connection, **kwargs):
+    print('---------------------------------')
+    print('Initial Database Connections!!!')
+    print(f'sender: {sender}')
+    print(f'Connection: {connection}')
+    print(f'Kwargs {kwargs}')

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{% extends 'testapp/base.html' %}
+
+{% block title_block %}second{% endblock %}
+
+{% block body_block %}
+<h3>Hello {{name}}</h3>
+<h4>Current Data & Time: {{date}}</h4>
+<a href="/result">Click for Update date and Time</a>
+{% endblock %}

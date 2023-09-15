@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends 'testapp/base.html' %}
+
+{% block title_block %}HOME{% endblock %}
+
+{% block body_block %}
+<h3>Hello {{name}}</h3>
+<form action="/result">
+    {{forms.as_p}}
+    {% csrf_token %}
+    <input type="submit" name="" id="">
+</form>
+{% endblock %}

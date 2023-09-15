@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends 'testapp/base.html' %}
+
+{% block title_block %}HOME{% endblock %}
+
+{% block body_block %}
+<form action="/age">
+    {{forms.as_p}}
+    {% csrf_token %}
+    <input type="submit" name="" id="">
+</form>
+{% endblock %}
